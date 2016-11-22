@@ -17,4 +17,4 @@ From the root directory:
 
 Then go to: http://localhost:8000 to see the app.
 
-You can change the default port for the server too.
+You can change the default port for the server too.	

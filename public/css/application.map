@@ -5,8 +5,8 @@
 		"../../styles/scss/application.scss"
 	],
 	"sourcesContent": [
-		"body {\n\n}"
+		"body {\n\t#content {\n\t\tmin-height: 500px;\n\t}\n}"
 	],
-	"mappings": "",
+	"mappings": ";AAAA,AACC,IADG,CACH,QAAQ,CAAC;EACR,UAAU,EAAE,KAAM;CAClB",
 	"names": []
 }
