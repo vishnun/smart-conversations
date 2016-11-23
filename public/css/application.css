@@ -1,6 +1,38 @@
-/* line 2, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+/* line 1, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* line 5, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
 body #content {
   min-height: 500px;
+}
+
+/* line 8, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+body .main {
+  flex: 1 0 auto;
+}
+
+/* line 10, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+body .main .critical-word {
+  font-size: 6em;
+}
+
+/* line 14, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+body .page-footer {
+  padding: 0;
+}
+
+/* line 17, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+body .valign-wrapper {
+  height: 500px;
+}
+
+/* line 19, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+body .valign-wrapper .valign {
+  width: 100%;
 }
 
 /*# sourceMappingURL=../../public/css/application.map */

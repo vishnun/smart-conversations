@@ -1,5 +1,23 @@
 body {
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 	#content {
 		min-height: 500px;
+	}
+	.main {
+    	flex: 1 0 auto;
+    	.critical-word {
+    		font-size: 6em;
+    	}
+  	}
+	.page-footer {
+		padding: 0
+	}
+	.valign-wrapper {
+		height: 500px;
+		.valign {
+			width: 100%;
+		}
 	}
 }

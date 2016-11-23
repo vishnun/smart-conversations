@@ -3,13 +3,14 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="public/css/application.css">
     <title>Smart Conversations</title>
 </head>
 
-<body>
-    <div id="header" class="container-fluid">
-        <nav>
+<body class="cyan lighten-5">
+    <header id="header" class="page-header container-fluid">
+        <nav class="cyan darken-4">
             <div class="nav-wrapper">
                 <a href="#!" class="brand-logo">Smart Conversations</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -21,37 +22,43 @@
                 </ul>
             </div>
         </nav>
-    </div>
-    <div class="container" id="content">
-        Body
-    </div>
-    <footer class="page-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                    </ul>
+    </header>
+    <div class="container main" id="content">
+        <div class="col s12 word-container">
+            <div class="col s12 m6">
+                <div class="card sticky-action" style="overflow: hidden;">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <div class="valign-wrapper">
+                            <div class="valign">
+                            <p class="center-align critical-word flow-text">Incomprehensibilities</p></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Conversation helper<i class="material-icons right">more_vert</i></span>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" id="start-btn" class="waves-effect waves-light btn"><i class="material-icons right">mic</i>start</a>
+                        <a title="full-screen" id="full-screen" class="right" href="#"><i class="material-icons small dp48">aspect_ratio</i></a>
+                    </div>
+                    <div class="card-reveal" style="display: none; transform: translateY(50px);">
+                        <span class="card-title grey-text text-darken-4">Start conversing<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <footer class="page-footer cyan darken-4">
         <div class="footer-copyright">
             <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                © 2016 LCL
+                <a class="grey-text text-lighten-4 right" href="#!">contact us</a>
             </div>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="javascripts/application.js"></script>
     <script type="text/javascript">
     $(".button-collapse").sideNav();
     </script>
