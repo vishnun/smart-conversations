@@ -10,12 +10,21 @@ body {
     	.critical-word {
     		font-size: 6em;
     	}
+    	.word-container {
+    		&:-webkit-full-screen {
+    			width: 100%;
+    			.critical-word {
+    				font-size: 35em;
+    				margin: 50px;
+    			}
+    		}
+    	}
   	}
 	.page-footer {
 		padding: 0
 	}
 	.valign-wrapper {
-		height: 500px;
+		min-height: 500px;
 		.valign {
 			width: 100%;
 		}

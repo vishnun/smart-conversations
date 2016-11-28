@@ -21,16 +21,27 @@ body .main .critical-word {
 }
 
 /* line 14, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+body .main .word-container:-webkit-full-screen {
+  width: 100%;
+}
+
+/* line 16, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+body .main .word-container:-webkit-full-screen .critical-word {
+  font-size: 35em;
+  margin: 50px;
+}
+
+/* line 23, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
 body .page-footer {
   padding: 0;
 }
 
-/* line 17, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+/* line 26, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
 body .valign-wrapper {
-  height: 500px;
+  min-height: 500px;
 }
 
-/* line 19, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
+/* line 28, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/scss/application.scss */
 body .valign-wrapper .valign {
   width: 100%;
 }
