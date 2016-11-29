@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+
+# SCSS
+*.map
+
+
 # C extensions
 *.so
 

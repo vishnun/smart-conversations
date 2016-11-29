@@ -26,43 +26,68 @@
     <div class="container main" id="content">
         <div class="col s12 word-container">
             <div class="col s12 m6">
-                <div class="card sticky-action" style="overflow: hidden;">
+                <div class="card sticky-action row">
                     <div class="card-image waves-effect waves-block waves-light">
                         <div class="valign-wrapper">
                             <div class="valign">
-                            <p class="center-align critical-word flow-text"></p></div>
+                                <p class="center-align critical-word flow-text"></p>
+                            </div>
                         </div>
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4"><i class="material-icons left">live_help</i>Help<i class="material-icons right">more_vert</i></span>
                     </div>
                     <div class="card-action">
-                        <button type="button" id="start-btn" class="waves-effect waves-light btn"><i class="material-icons right">mic</i><span class="text">start<span></button>
+                        <div class="col">
+                            <button type="button" id="start-btn" class="waves-effect waves-light btn">
+                                <i class="material-icons right">mic</i>
+                                <span class="text">start<span>
+                        	</button>	
+                    	</div>
+                        
+                        
+                        <div class="col">
+						    <select class="lang-select">
+						    </select>
+						</div>
+
+
                         <a title="full-screen" id="full-screen" class="right" href="#"><i class="material-icons small dp48">aspect_ratio</i></a>
                     </div>
                     <div class="card-reveal" style="display: none; transform: translateY(50px);">
                         <span class="card-title grey-text text-darken-4">Start conversing<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                        <ul><li>Press the start button to start talking.</li><li>Press space bar any time to clear the button.</li></ul>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <ul>
+                                    <li>Press the start button to start talking.</li>
+                                    <li>Press space bar any time to clear the button.</li>
+                                </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <footer class="page-footer cyan darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-                © 2016 LCL
-                <a class="grey-text text-lighten-4 right" href="#!">contact us</a>
+            <div class="row">
+                <div class="input-field col s3">
+                    <select class="topic-select">
+                    </select>
+                    <label>Select topic:</label>
+                </div>
             </div>
         </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script src="javascripts/application.js"></script>
-    <script type="text/javascript">
-    $(".button-collapse").sideNav();
-    </script>
+        <footer class="page-footer cyan darken-4">
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 LCL
+                    <a class="grey-text text-lighten-4 right" href="#!">contact us</a>
+                </div>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <script type="text/javascript" src="javascripts/data.js"></script>
+        <script src="javascripts/application.js"></script>
+        <script type="text/javascript">
+        $(".button-collapse").sideNav();
+        </script>
 </body>
 
 </html>
