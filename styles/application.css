@@ -19,5 +19,15 @@ body {
     min-height: 30vh; }
     body .valign-wrapper .valign {
       width: 100%; }
+  body .lang-select.select-wrapper input.select-dropdown {
+    margin-bottom: 0; }
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
 
 /*# sourceMappingURL=application.css.map */
