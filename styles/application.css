@@ -16,7 +16,7 @@ body {
   body .page-footer {
     padding: 0; }
   body .valign-wrapper {
-    min-height: 200px; }
+    min-height: 30vh; }
     body .valign-wrapper .valign {
       width: 100%; }
 

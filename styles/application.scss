@@ -3,7 +3,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
 	#content {
-		min-height: 500px;
+		min-height: 200px;
 	}
 	.main {
     	flex: 1 0 auto;
@@ -24,7 +24,7 @@ body {
 		padding: 0
 	}
 	.valign-wrapper {
-		min-height: 500px;
+		min-height: 30vh;
 		.valign {
 			width: 100%;
 		}
