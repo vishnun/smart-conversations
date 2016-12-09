@@ -76,7 +76,7 @@ $(function () {
             var lastSentence = event.results[last][0].transcript;
             var mode = $twoWordModeEl.prop("checked");
             getInterestWords().forEach(function (element, index) {
-                if (lastSentence.indexOf(element) != -1 && reset) {
+                if (lastSentence.indexOf(element) != -1) {
                     if (criticalWord1.text() == '') {
                         criticalWord1.text(element);
                         word1 = element;
@@ -100,7 +100,7 @@ $(function () {
                     dataItem = {};
                     identified = false;
                 }
-                reset = false;
+                reset = true;
             }
         };
 
@@ -110,9 +110,24 @@ $(function () {
             if (evt.keyCode == space) {
                 criticalWord1.text('');
                 criticalWord2.text('');
-                reset = true;
+                reset = false;
             }
         });
+
+        function saveCSV(analytics) {
+            var csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "word,sentence,date,timestamp\n";
+            analytics.forEach(function (wordItem, index) {
+                var dataString = wordItem.word1 + "," + wordItem.sentence + "," + wordItem.date.replace(",", "-") + "," + wordItem.timestamp;
+                csvContent += index < analytics.length ? dataString + "\n" : dataString;
+            });
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "my_data.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click();
+        }
 
         $('#start-btn').on('click', function (e) {
             recognition.lang = getLang();
@@ -122,6 +137,7 @@ $(function () {
             if (started) {
                 started = false;
                 console.log(analytics);
+                saveCSV(analytics);
                 recognition.stop();
                 $(this).find('.text').text("Start");
             } else {
