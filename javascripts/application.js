@@ -47,7 +47,7 @@ $(function () {
 
     function init() {
         var started = false,
-            reset = false;
+            reset = true;
         var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
         var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
         var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
@@ -55,6 +55,8 @@ $(function () {
         var criticalWord2 = $('.critical-word-2');
         var wordContainer = $('.word-container');
         var $twoWordModeEl = $("#two-word-mode");
+
+        var analytics = [];
 
         var languages_supported = ['en-US', 'en-GB', 'en-IN', 'en-CA', 'en-AU', 'en-NZ', 'en-ZA'];
 
@@ -66,23 +68,38 @@ $(function () {
 
         recognition.continuous = true;
         recognition.interimResults = true;
-        recognition.maxAlternatives = 2;
-
+        recognition.maxAlternatives = 1;
+        var dataItem = {};
+        var identified = false;
         recognition.onresult = function (event) {
             var last = event.results.length - 1;
             var lastSentence = event.results[last][0].transcript;
             var mode = $twoWordModeEl.prop("checked");
             getInterestWords().forEach(function (element, index) {
-                if (lastSentence.indexOf(element) != -1) {
+                if (lastSentence.indexOf(element) != -1 && reset) {
                     if (criticalWord1.text() == '') {
                         criticalWord1.text(element);
                         word1 = element;
+                        dataItem.word1 = word1;
+                        identified = true;
                     } else if (mode && criticalWord2.text() == '' && element !== word1) {
                         criticalWord2.text(element);
+                        dataItem.word2 = element;
+                        identified = true;
                     }
                 }
             });
             if (event.results[last].isFinal) {
+                if (identified) {
+                    var sentence = event.results[last][0].transcript;
+                    var date = new Date(event.timeStamp);
+                    dataItem.sentence = sentence;
+                    dataItem.date = date.toGMTString();
+                    dataItem.timestamp = event.timeStamp;
+                    analytics.push(dataItem);
+                    dataItem = {};
+                    identified = false;
+                }
                 reset = false;
             }
         };
@@ -104,6 +121,7 @@ $(function () {
             recognition.grammars = speechRecognitionList;
             if (started) {
                 started = false;
+                console.log(analytics);
                 recognition.stop();
                 $(this).find('.text').text("Start");
             } else {
