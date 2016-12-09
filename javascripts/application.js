@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     function getLang() {
         return $('.lang-select option:selected').text();
@@ -10,7 +10,7 @@ $(function() {
 
     function setupLanguages(langs) {
         $('.lang-select').html('');
-        langs.forEach(function(lang, index) {
+        langs.forEach(function (lang, index) {
             $('.lang-select').append('<option value="' + lang + '">' + lang + '</option>');
         });
     }
@@ -35,13 +35,13 @@ $(function() {
 
     function setupTwoWords($twoWordModeEl, criticalWord1, criticalWord2) {
         $twoWordModeEl.on('change', function (e) {
-           if($(this).prop("checked") == true) {
-               criticalWord1.removeClass('s12');
-               criticalWord2.removeClass('hide');
-           } else {
-               criticalWord1.addClass('s12');
-               criticalWord2.addClass('hide');
-           }
+            if ($(this).prop("checked") == true) {
+                criticalWord1.removeClass('s12');
+                criticalWord2.removeClass('hide');
+            } else {
+                criticalWord1.addClass('s12');
+                criticalWord2.addClass('hide');
+            }
         });
     }
 
@@ -62,21 +62,26 @@ $(function() {
         var recognition = new SpeechRecognition();
         var speechRecognitionList = new SpeechGrammarList();
 
+        var word1 = "";
+
         recognition.continuous = true;
         recognition.interimResults = true;
         recognition.maxAlternatives = 2;
 
-        recognition.onresult = function(event) {
+        recognition.onresult = function (event) {
             var last = event.results.length - 1;
             var lastSentence = event.results[last][0].transcript;
+            console.log("last sentence: ", lastSentence);
             var mode = $twoWordModeEl.prop("checked");
-            getInterestWords().forEach(function(element, index) {
+            getInterestWords().forEach(function (element, index) {
                 if (lastSentence.indexOf(element) != -1) {
-                    if (criticalWord1.text() == '' && reset == false) {
+                    if (criticalWord1.text() == '') {
                         criticalWord1.text(element);
-                        reset = true;
-                    } else if (criticalWord2.text() == '' && reset == false) {
+                        console.log("word 1: ", element);
+                        word1 = element;
+                    } else if (criticalWord2.text() == '' && element !== word1) {
                         criticalWord2.text(element);
+                        console.log("word 2: ", element);
                     }
                 }
             });
@@ -85,7 +90,7 @@ $(function() {
             }
         };
 
-        $(window).keyup(function(evt) {
+        $(window).keyup(function (evt) {
             evt = evt || window.event;
             var space = '32';
             if (evt.keyCode == space) {
@@ -95,7 +100,7 @@ $(function() {
             }
         });
 
-        $('#start-btn').on('click', function(e) {
+        $('#start-btn').on('click', function (e) {
             recognition.lang = getLang();
             var grammar = getGrammar();
             speechRecognitionList.addFromString(grammar, 1);
@@ -113,7 +118,7 @@ $(function() {
             $(window).focus();
         });
 
-        $('#full-screen').on('click', function() {
+        $('#full-screen').on('click', function () {
             if (wordContainer[0].webkitRequestFullscreen) {
                 wordContainer[0].webkitRequestFullscreen();
             }
