@@ -71,17 +71,14 @@ $(function () {
         recognition.onresult = function (event) {
             var last = event.results.length - 1;
             var lastSentence = event.results[last][0].transcript;
-            console.log("last sentence: ", lastSentence);
             var mode = $twoWordModeEl.prop("checked");
             getInterestWords().forEach(function (element, index) {
                 if (lastSentence.indexOf(element) != -1) {
                     if (criticalWord1.text() == '') {
                         criticalWord1.text(element);
-                        console.log("word 1: ", element);
                         word1 = element;
-                    } else if (criticalWord2.text() == '' && element !== word1) {
+                    } else if (mode && criticalWord2.text() == '' && element !== word1) {
                         criticalWord2.text(element);
-                        console.log("word 2: ", element);
                     }
                 }
             });
