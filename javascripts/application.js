@@ -42,8 +42,15 @@ $(function () {
                 criticalWord1.addClass('s12');
                 criticalWord2.addClass('hide');
             }
+            focusOnWindow(this);
         });
     }
+
+    function focusOnWindow(el){
+        $(el).blur();
+        $(window).focus();
+    }
+
 
     function init() {
         var started = false,
@@ -76,13 +83,13 @@ $(function () {
             var lastSentence = event.results[last][0].transcript;
             var mode = $twoWordModeEl.prop("checked");
             getInterestWords().forEach(function (element, index) {
-                if (lastSentence.indexOf(element) != -1) {
+                if (lastSentence.indexOf(element) != -1 && reset == true) {
                     if (criticalWord1.text() == '') {
                         criticalWord1.text(element);
                         word1 = element;
                         dataItem.word1 = word1;
                         identified = true;
-                    } else if (mode && criticalWord2.text() == '' && element !== word1) {
+                    } else if (mode && criticalWord2.text() == '' && element !== word1 && reset == true) {
                         criticalWord2.text(element);
                         dataItem.word2 = element;
                         identified = true;
@@ -104,13 +111,20 @@ $(function () {
             }
         };
 
+        function clearWords(){
+            if(criticalWord1.text() == '') {
+                return;
+            }
+            criticalWord1.text('');
+            criticalWord2.text('');
+            reset = false;
+        }
+
         $(window).keyup(function (evt) {
             evt = evt || window.event;
             var space = '32';
             if (evt.keyCode == space) {
-                criticalWord1.text('');
-                criticalWord2.text('');
-                reset = false;
+                clearWords();
             }
         });
 
@@ -145,8 +159,7 @@ $(function () {
                 recognition.start();
                 $(this).find('.text').text("Stop");
             }
-            $(this).blur();
-            $(window).focus();
+            focusOnWindow(this);
         });
 
         $('#full-screen').on('click', function () {
