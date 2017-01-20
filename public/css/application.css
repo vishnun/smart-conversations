@@ -1,23 +1,65 @@
+/* line 1, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body {
   display: flex;
   min-height: 100vh;
-  flex-direction: column; }
-  body #content {
-    min-height: 200px; }
-  body .main {
-    flex: 1 0 auto; }
-    body .main .critical-word {
-      font-size: 6em; }
-    body .main .word-container:-webkit-full-screen {
-      width: 100%; }
-      body .main .word-container:-webkit-full-screen .critical-word {
-        font-size: 35em;
-        margin: 50px; }
-  body .page-footer {
-    padding: 0; }
-  body .valign-wrapper {
-    min-height: 200px; }
-    body .valign-wrapper .valign {
-      width: 100%; }
+  flex-direction: column;
+}
 
-/*# sourceMappingURL=application.css.map */
+/* line 5, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body #content {
+  min-height: 200px;
+}
+
+/* line 8, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .main {
+  flex: 1 0 auto;
+}
+
+/* line 10, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .main .critical-word {
+  font-size: 6em;
+}
+
+/* line 14, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .main .word-container:-webkit-full-screen {
+  width: 100%;
+}
+
+/* line 16, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .main .word-container:-webkit-full-screen .critical-word {
+  font-size: 15em;
+}
+
+/* line 22, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .page-footer {
+  padding: 0;
+}
+
+/* line 25, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .valign-wrapper {
+  min-height: 30vh;
+}
+
+/* line 27, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .valign-wrapper .valign {
+  width: 100%;
+}
+
+/* line 32, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .lang-select.select-wrapper input.select-dropdown {
+  margin-bottom: 0;
+}
+
+/* line 38, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+/* line 44, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/*# sourceMappingURL=../public/css/application.map */
