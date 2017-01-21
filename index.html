@@ -40,14 +40,13 @@
                             class="material-icons left">live_help</i>Help<i
                             class="material-icons right">more_vert</i></span>
                 </div>
-                <div class="card-action clearfix">
+                <div class="card-action clearfix valign-wrapper">
                     <div class="col">
                         <button type="button" id="start-btn" class="waves-effect waves-light btn">
                             <i class="material-icons right">mic</i>
                             <span class="text">start<span>
                         </button>
                     </div>
-
 
                     <div class="col">
                         <select class="lang-select">
@@ -61,6 +60,11 @@
                         </p></div>
 
                     <a title="full-screen" id="full-screen" class="right" href="#"><i class="material-icons small dp48">aspect_ratio</i></a>
+
+                    <a title="Save CSV" id="save-csv" class="right" href="#">
+                        <i class="material-icons small dp48">save</i>
+                    </a>
+
                 </div>
                 <div class="card-reveal" style="display: none; transform: translateY(50px);">
                     <span class="card-title grey-text text-darken-4">Start conversing<i class="material-icons right">close</i></span>
@@ -93,10 +97,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <!--<script src="public/js/materialize.min.js"></script>-->
 <script type="text/javascript" src="javascripts/data.js"></script>
+<script src="javascripts/src/Analyser.js"></script>
+<script src="javascripts/src/ConversationView.js"></script>
+<script src="javascripts/src/Conversation.js"></script>
+<script src="javascripts/src/ConversationApp.js"></script>
+
 <script src="javascripts/application.js"></script>
+
 <script type="text/javascript">
     $(".button-collapse").sideNav();
 </script>
+
 </body>
 
 </html>

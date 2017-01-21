@@ -18,6 +18,19 @@ body {
           padding-top: 0;
           padding-bottom: 0;
         }
+        .card-action {
+          padding: 10px;
+          #full-screen {
+            position: absolute;
+            right: 0;
+            color: #02797d;
+          }
+          #save-csv {
+            position: absolute;
+            right: 40px;
+            color: #02797d;
+          }
+        }
       }
       &:-webkit-full-screen {
         width: 100%;
@@ -39,7 +52,7 @@ body {
   .page-footer {
     padding: 0;
   }
-  .valign-wrapper {
+  .card-image .valign-wrapper {
     min-height: 30vh;
     .valign {
       width: 100%;
@@ -48,6 +61,7 @@ body {
 
   .lang-select.select-wrapper input.select-dropdown {
     margin-bottom: 0;
+    height: 2rem;
   }
 
 }
