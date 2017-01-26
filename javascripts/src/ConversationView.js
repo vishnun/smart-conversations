@@ -51,13 +51,11 @@ function ConversationView() {
         self.conversation.reset = false;
     }
 
-    $(window).keyup(function(evt) {
-        evt = evt || window.event;
-        var space = '32';
-        if (evt.keyCode == space) {
+    this.setAutoClear = function(timeout) {
+        setTimeout(function() {
             clearWords();
-        }
-    });
+        }, timeout);
+    };
 
     setupTopics();
     setupTwoWords();
@@ -66,8 +64,9 @@ function ConversationView() {
 ConversationView.prototype.checkWords = function(sentence, reset) {
     var words = this.getWords();
     var returnVal = {}
+    var timeout = 10000;
     var word, previousWord;
-    var mode = this.getWordsMode();
+    var mode = this.isTwoWordsMode();
     for (var index in words) {
         word = words[index];
         if (sentence.indexOf(word) != -1 && reset) {
@@ -76,10 +75,14 @@ ConversationView.prototype.checkWords = function(sentence, reset) {
                 returnVal.word1 = word;
                 previousWord = word;
                 returnVal.identified = true;
+                if(!this.isTwoWordsMode()){
+                    this.setAutoClear(timeout);
+                }
             } else if (mode && this.criticalWord2El.text() == '' && word !== previousWord && reset == true) {
                 this.criticalWord2El.text(word);
                 returnVal.word2 = word;
                 returnVal.identified = true;
+                this.setAutoClear(timeout);
                 break;
             }
         }
@@ -87,7 +90,7 @@ ConversationView.prototype.checkWords = function(sentence, reset) {
     return returnVal;
 };
 
-ConversationView.prototype.getWordsMode = function() {
+ConversationView.prototype.isTwoWordsMode = function() {
     return this.twoWordModeEl.prop("checked");
 };
 

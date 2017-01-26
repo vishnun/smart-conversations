@@ -38,8 +38,6 @@ function Conversation(view, analyser) {
     recognition.onresult = function(event) {
         var last = event.results.length - 1;
         var lastSentence = event.results[last][0].transcript;
-        var mode = view.getWordsMode();
-
         var wordsResults = view.checkWords(lastSentence, self.reset);
 
         dataItem.word1 = wordsResults.word1;
