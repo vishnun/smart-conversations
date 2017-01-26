@@ -1,4 +1,4 @@
-function ConversationView() {
+function ConversationView(analyser) {
     var self = this;
     this.langSelectEl = $('.lang-select');
     this.langEl = $('.lang-select option:selected');
@@ -62,9 +62,26 @@ function ConversationView() {
     setupTwoWords();
 }
 
+ConversationView.prototype.getMatchedWords = function(sentence){
+    var words = this.getWords();
+    var returnVal = {};
+    for (var index in words) {
+        word = words[index];
+        if (sentence.indexOf(word) != -1) {
+            if (!returnVal.word1 || returnVal.word1 == '') {
+                returnVal.word1 = word;
+            } else {
+                returnVal.word2 = word;
+            }
+            returnVal.identified = true;
+        }
+    }
+    return returnVal;
+};
+
 ConversationView.prototype.checkWords = function(sentence, reset) {
     var words = this.getWords();
-    var returnVal = {}
+    var returnVal = {};
     var timeout = 10000;
     var word;
     var mode = this.isTwoWordsMode();

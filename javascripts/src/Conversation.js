@@ -44,26 +44,22 @@ function Conversation(view, analyser) {
         self.started = false;
         recognition.stop();
     };
-
-    var identified = false;
     var dataItem = {};
     recognition.onresult = function(event) {
         var last = event.results.length - 1;
         var lastSentence = event.results[last][0].transcript;
-        var wordsResults = view.checkWords(lastSentence, self.reset);
-
-        dataItem.word1 = wordsResults.word1;
-        dataItem.word2 = wordsResults.word2;
-
+        view.checkWords(lastSentence, self.reset);
         if (event.results[last].isFinal) {
-            if (wordsResults.identified) {
+            var resultVal = view.getMatchedWords(lastSentence);
+            if (resultVal.identified) {
                 var date = new Date(event.timeStamp);
+                dataItem.word1 = resultVal.word1 || "";
+                dataItem.word2 = resultVal.word2 || "";
                 dataItem.sentence = lastSentence;
                 dataItem.date = date.toGMTString();
                 dataItem.timestamp = event.timeStamp;
                 analyser.pushItem(dataItem);
                 dataItem = {};
-                identified = false;
             }
             self.reset = true;
         }
