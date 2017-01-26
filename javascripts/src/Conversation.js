@@ -16,6 +16,18 @@ function Conversation(view, analyser) {
     view.setupLanguages(languagesSupported);
     view.setConversation(this);
 
+
+    recognition.onerror = function(event) {
+        console.log('Speech recognition error detected: ' + event.error);
+    };
+
+    recognition.onend = function() {
+        console.log('Speech recognition service disconnected');
+        if (self.started) {
+            recognition.start();
+        }
+    };
+
     var getGrammar = function(words) {
         return '#JSGF V1.0; grammar interest_words; public <interest_words> = ' + words.join(' | ') + ' ;';
     };

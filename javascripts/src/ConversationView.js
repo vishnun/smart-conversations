@@ -11,6 +11,7 @@ function ConversationView() {
     this.twoWordModeEl = $("#two-word-mode");
     this.startBtnEl = $('#start-btn');
     this.conversation;
+    this.previousWord = ""
 
     fullScreenEl.on('click', function() {
         if (wordContainer[0].webkitRequestFullscreen) {
@@ -65,7 +66,7 @@ ConversationView.prototype.checkWords = function(sentence, reset) {
     var words = this.getWords();
     var returnVal = {}
     var timeout = 10000;
-    var word, previousWord;
+    var word;
     var mode = this.isTwoWordsMode();
     for (var index in words) {
         word = words[index];
@@ -73,12 +74,12 @@ ConversationView.prototype.checkWords = function(sentence, reset) {
             if (this.criticalWord1El.text() == '') {
                 this.criticalWord1El.text(word);
                 returnVal.word1 = word;
-                previousWord = word;
+                this.previousWord = word;
                 returnVal.identified = true;
                 if(!this.isTwoWordsMode()){
                     this.setAutoClear(timeout);
                 }
-            } else if (mode && this.criticalWord2El.text() == '' && word !== previousWord && reset == true) {
+            } else if (mode && this.criticalWord2El.text() == '' && word !== this.previousWord && reset == true) {
                 this.criticalWord2El.text(word);
                 returnVal.word2 = word;
                 returnVal.identified = true;
