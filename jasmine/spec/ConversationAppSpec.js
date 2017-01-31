@@ -29,9 +29,7 @@ describe("ConversationApp", function () {
         var convApp = new ConversationApp();
         convApp.init();
 
-        expect(spiedObject.setStartup).toHaveBeenCalled()
-
-
+        expect(spiedObject.setStartup).toHaveBeenCalled();
     });
 
 

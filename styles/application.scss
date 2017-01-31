@@ -1,4 +1,5 @@
 @import 'reset';
+
 body {
   display: flex;
   min-height: 100vh;
@@ -24,6 +25,10 @@ body {
             position: absolute;
             right: 0;
             color: #02797d;
+          }
+          input#clear-timeout {
+            width: 40px;
+            text-align: center;
           }
           #save-csv {
             position: absolute;

@@ -9,6 +9,7 @@ function ConversationView(analyser) {
     this.criticalWord1El = $('.critical-word-1');
     this.criticalWord2El = $('.critical-word-2');
     this.twoWordModeEl = $("#two-word-mode");
+    this.timeoutEl = $("#clear-timeout");
     this.startBtnEl = $('#start-btn');
     this.conversation = null;
     this.previousWord = "";
@@ -89,10 +90,13 @@ ConversationView.prototype.isClear = function () {
     return this.criticalWord1El.text() == "";
 };
 
+ConversationView.prototype.getTimeout = function () {
+    return this.timeoutEl.val() * 1000;
+};
 ConversationView.prototype.checkWords = function (sentence, reset) {
     var words = this.getWords();
     var returnVal = {};
-    var timeout = 10000;
+    var timeout = this.getTimeout();
     var word;
     var mode = this.isTwoWordsMode();
     for (var index in words) {

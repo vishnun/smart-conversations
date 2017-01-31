@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <!--<link rel="stylesheet" type="text/css" href="public/css/materialize.min.css">-->
-    <link rel="icon" href="/favicon.ico?" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="public/css/application.css">
     <title>Smart Conversations</title>
@@ -28,53 +28,62 @@
 <div class="container main" id="content">
     <div class="col s12 m6 word-container">
         <div class="card sticky-action row">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <div class="valign-wrapper">
-                        <div class="valign">
-                            <p class="center-align critical-word critical-word-1 flow-text col s6 s12"></p>
-                            <p class="center-align critical-word critical-word-2 flow-text col s6 hide"></p>
-                        </div>
+            <div class="card-image waves-effect waves-block waves-light">
+                <div class="valign-wrapper">
+                    <div class="valign">
+                        <p class="center-align critical-word critical-word-1 flow-text col s6 s12"></p>
+                        <p class="center-align critical-word critical-word-2 flow-text col s6 hide"></p>
                     </div>
                 </div>
-                <div class="card-content">
+            </div>
+            <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4"><i
                             class="material-icons left">live_help</i>Help<i
                             class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-action clearfix valign-wrapper">
+                <div class="col">
+                    <button type="button" id="start-btn" class="waves-effect waves-light btn">
+                        <i class="material-icons right">mic</i>
+                        <span class="text">start</span>
+                    </button>
                 </div>
-                <div class="card-action clearfix valign-wrapper">
-                    <div class="col">
-                        <button type="button" id="start-btn" class="waves-effect waves-light btn">
-                            <i class="material-icons right">mic</i>
-                            <span class="text">start<span>
-                        </button>
+
+                <div class="col">
+                    <select class="lang-select">
+                    </select>
+                </div>
+
+                <div class="col">
+                    <p>
+                        <input type="checkbox" class="filled-in" id="two-word-mode">
+                        <label for="two-word-mode">Show 2 words</label>
+                    </p>
+                </div>
+                <div class="col">
+                    Timeout
+                    <div class="input-field inline">
+                        <input id="clear-timeout" type="number" class="validate" value="10">
                     </div>
-
-                    <div class="col">
-                        <select class="lang-select">
-                        </select>
-                    </div>
-
-                    <div class="col">
-                        <p>
-                            <input type="checkbox" class="filled-in" id="two-word-mode">
-                            <label for="two-word-mode">Show 2 words</label>
-                        </p></div>
-
-                    <a title="full-screen" id="full-screen" class="right" href="#"><i class="material-icons small dp48">aspect_ratio</i></a>
-
-                    <a title="Save CSV" id="save-csv" class="right" href="#">
-                        <i class="material-icons small dp48">save</i>
-                    </a>
-
+                    sec
                 </div>
-                <div class="card-reveal" style="display: none; transform: translateY(50px);">
-                    <span class="card-title grey-text text-darken-4">Start conversing<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    <ul>
-                        <li>Press the start button to start talking.</li>
-                        <li>Press space bar any time to clear the button.</li>
-                    </ul>
-                </div>
+
+                <a title="full-screen" id="full-screen" class="right" href="#"><i class="material-icons small dp48">aspect_ratio</i></a>
+
+                <a title="Save CSV" id="save-csv" class="right" href="#">
+                    <i class="material-icons small dp48">save</i>
+                </a>
+
+            </div>
+            <div class="card-reveal" style="display: none; transform: translateY(50px);">
+                <span class="card-title grey-text text-darken-4">Start conversing<i
+                        class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                <ul>
+                    <li>Press the start button to start talking.</li>
+                    <li>Press space bar any time to clear the button.</li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="row">
