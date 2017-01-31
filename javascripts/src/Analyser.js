@@ -21,7 +21,8 @@ function Analyser() {
 
     this.addItem = this.pushItem;
 
-    this.getData = function(num = 1) {
+    this.getData = function(num) {
+        num = typeof num !== 'undefined' ? num : 1;
         return analytics.slice(0, num);
     };
 
