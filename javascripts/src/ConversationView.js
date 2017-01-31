@@ -10,17 +10,23 @@ function ConversationView(analyser) {
     this.criticalWord2El = $('.critical-word-2');
     this.twoWordModeEl = $("#two-word-mode");
     this.startBtnEl = $('#start-btn');
-    this.conversation;
-    this.previousWord = ""
+    this.conversation = null;
+    this.previousWord = "";
 
-    fullScreenEl.on('click', function() {
+    fullScreenEl.on('click', function () {
         if (wordContainer[0].webkitRequestFullscreen) {
             wordContainer[0].webkitRequestFullscreen();
         }
     });
 
-    saveCsvEl.on('click', function() {
-        analyser.saveCSV()
+    saveCsvEl.on('click', function () {
+        var csvContent = analyser.getCSV();
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "my_data.csv");
+        document.body.appendChild(link); // Required for FF
+        link.click();
     });
 
     function setupTopics() {
@@ -31,7 +37,7 @@ function ConversationView(analyser) {
     }
 
     function setupTwoWords() {
-        self.twoWordModeEl.on('change', function(e) {
+        self.twoWordModeEl.on('change', function (e) {
             if ($(this).prop("checked") == true) {
                 self.criticalWord1El.removeClass('s12');
                 self.criticalWord2El.removeClass('hide');
@@ -52,8 +58,8 @@ function ConversationView(analyser) {
         self.conversation.reset = false;
     }
 
-    this.setAutoClear = function(timeout) {
-        setTimeout(function() {
+    this.setAutoClear = function (timeout) {
+        setTimeout(function () {
             clearWords();
         }, timeout);
     };
@@ -62,7 +68,7 @@ function ConversationView(analyser) {
     setupTwoWords();
 }
 
-ConversationView.prototype.getMatchedWords = function(sentence){
+ConversationView.prototype.getMatchedWords = function (sentence) {
     var words = this.getWords();
     var returnVal = {};
     for (var index in words) {
@@ -79,7 +85,7 @@ ConversationView.prototype.getMatchedWords = function(sentence){
     return returnVal;
 };
 
-ConversationView.prototype.checkWords = function(sentence, reset) {
+ConversationView.prototype.checkWords = function (sentence, reset) {
     var words = this.getWords();
     var returnVal = {};
     var timeout = 10000;
@@ -93,7 +99,7 @@ ConversationView.prototype.checkWords = function(sentence, reset) {
                 returnVal.word1 = word;
                 this.previousWord = word;
                 returnVal.identified = true;
-                if(!this.isTwoWordsMode()){
+                if (!this.isTwoWordsMode()) {
                     this.setAutoClear(timeout);
                 }
             } else if (mode && this.criticalWord2El.text() == '' && word !== this.previousWord && reset == true) {
@@ -108,46 +114,46 @@ ConversationView.prototype.checkWords = function(sentence, reset) {
     return returnVal;
 };
 
-ConversationView.prototype.isTwoWordsMode = function() {
+ConversationView.prototype.isTwoWordsMode = function () {
     return this.twoWordModeEl.prop("checked");
 };
 
-ConversationView.prototype.initMaterialSelect = function() {
+ConversationView.prototype.initMaterialSelect = function () {
     $('select').material_select();
 };
 
-ConversationView.prototype.setupLanguages = function(languagesSupported) {
+ConversationView.prototype.setupLanguages = function (languagesSupported) {
     this.langSelectEl.html('');
     var self = this;
-    languagesSupported.forEach(function(lang, index) {
+    languagesSupported.forEach(function (lang, index) {
         self.langSelectEl.append('<option value="' + lang + '">' + lang + '</option>');
     });
 
     this.initMaterialSelect();
 };
 
-ConversationView.prototype.getWords = function() {
+ConversationView.prototype.getWords = function () {
     var selectedTopicEl = $('.topic-select option:selected');
     var selectedTopic = selectedTopicEl.val();
     return window.lcl.topics[selectedTopic];
 };
 
-ConversationView.prototype.getLang = function() {
+ConversationView.prototype.getLang = function () {
     return this.langEl.text();
 };
 
-ConversationView.prototype.focusOnWindow = function(el) {
+ConversationView.prototype.focusOnWindow = function (el) {
     $(el).blur();
     $(window).focus();
 };
 
-ConversationView.prototype.setConversation = function(conversation) {
+ConversationView.prototype.setConversation = function (conversation) {
     this.conversation = conversation;
 };
 
-ConversationView.prototype.setStartStop = function() {
+ConversationView.prototype.setStartStop = function () {
     var self = this;
-    this.startBtnEl.on('click', function(e) {
+    this.startBtnEl.on('click', function (e) {
         if (self.conversation.hasStarted()) {
             self.conversation.stopRecognition();
             $(this).find('.text').text("Start");
