@@ -85,6 +85,10 @@ ConversationView.prototype.getMatchedWords = function (sentence) {
     return returnVal;
 };
 
+ConversationView.prototype.isClear = function () {
+    return this.criticalWord1El.text() == "";
+};
+
 ConversationView.prototype.checkWords = function (sentence, reset) {
     var words = this.getWords();
     var returnVal = {};

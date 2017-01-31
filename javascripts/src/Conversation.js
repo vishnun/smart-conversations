@@ -17,22 +17,22 @@ function Conversation(view, analyser) {
     view.setConversation(this);
 
 
-    recognition.onerror = function(event) {
+    recognition.onerror = function (event) {
         console.log('Speech recognition error detected: ' + event.error);
     };
 
-    recognition.onend = function() {
+    recognition.onend = function () {
         console.log('Speech recognition service disconnected');
         if (self.started) {
             recognition.start();
         }
     };
 
-    var getGrammar = function(words) {
+    var getGrammar = function (words) {
         return '#JSGF V1.0; grammar interest_words; public <interest_words> = ' + words.join(' | ') + ' ;';
     };
 
-    this.startRecognition = function(words) {
+    this.startRecognition = function (words) {
         recognition.lang = view.getLang();
         speechRecognitionList.addFromString(getGrammar(words), 1);
         recognition.grammars = speechRecognitionList;
@@ -40,14 +40,15 @@ function Conversation(view, analyser) {
         recognition.start();
     };
 
-    this.stopRecognition = function() {
+    this.stopRecognition = function () {
         self.started = false;
         recognition.stop();
     };
     var dataItem = {};
-    recognition.onresult = function(event) {
+    recognition.onresult = function (event) {
         var last = event.results.length - 1;
         var lastSentence = event.results[last][0].transcript;
+        var displayedOnScreen = view.isClear();
         view.checkWords(lastSentence, self.reset);
         if (event.results[last].isFinal) {
             var resultVal = view.getMatchedWords(lastSentence);
@@ -55,6 +56,7 @@ function Conversation(view, analyser) {
                 var date = new Date(event.timeStamp);
                 dataItem.word1 = resultVal.word1 || "";
                 dataItem.word2 = resultVal.word2 || "";
+                dataItem.displayedOnScreen = displayedOnScreen ? 'true' : 'false';
                 dataItem.sentence = lastSentence;
                 dataItem.date = date.toGMTString();
                 dataItem.timestamp = event.timeStamp;
@@ -67,10 +69,10 @@ function Conversation(view, analyser) {
 
 }
 
-Conversation.prototype.hasStarted = function() {
+Conversation.prototype.hasStarted = function () {
     return this.started;
 };
 
-Conversation.prototype.setStartup = function() {
+Conversation.prototype.setStartup = function () {
     this.view.setStartStop(this);
 };

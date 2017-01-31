@@ -9,6 +9,11 @@ __pycache__/
 *.map
 
 
+#sample Test files
+jasmine/spec/PlayerSpec.js
+javascripts/src/Player.js
+javascripts/src/Song.js
+
 # C extensions
 *.so
 
