@@ -4,7 +4,7 @@ function ConversationApp() {
     var conversation = new Conversation(view, analyser);
 
     return {
-        init: function(argument) {
+        init: function () {
             conversation.setStartup();
         }
     };
