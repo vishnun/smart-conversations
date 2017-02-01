@@ -5,5 +5,6 @@ window.lcl.topics = {
     music: ['rock', 'rap', 'country'],
     languages: ['American', 'Spanglish', 'African', 'German'],
     goodsoccerteams: ['Arsenal', 'Manchester'],
-    fruit: ['Apple', 'Pear', 'Orange', 'Banana']
-}
+    fruit: ['Apple', 'Pear', 'Orange', 'Banana'],
+    diffusion: ['continuous','unpredictable','random','flow','equilibrium','predictable','visible','independent','backwards','concentration','ratio','percent','dynamic','inanimate','intend','intention','collective','uniform','simultaneous']
+};
