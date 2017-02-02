@@ -161,13 +161,16 @@ ConversationView.prototype.setConversation = function (conversation) {
 
 ConversationView.prototype.setStartStop = function () {
     var self = this;
+    var stopBtnClass = "red lighten-2";
     this.startBtnEl.on('click', function (e) {
         if (self.conversation.hasStarted()) {
             self.conversation.stopRecognition();
             $(this).find('.text').text("Start");
+            $(this).removeClass(stopBtnClass);
         } else {
             self.conversation.startRecognition(self.getWords());
             $(this).find('.text').text("Stop");
+            $(this).addClass(stopBtnClass);
         }
         self.focusOnWindow(this);
     });
