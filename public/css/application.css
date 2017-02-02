@@ -74,7 +74,7 @@ body .main {
 
 /* line 12, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .critical-word {
-  font-size: 6em;
+  font-size: 3vw;
 }
 
 /* line 16, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
@@ -120,7 +120,7 @@ body .main .word-container:-webkit-full-screen {
 
 /* line 42, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container:-webkit-full-screen .critical-word {
-  font-size: 15em;
+  font-size: 7vw;
 }
 
 /* line 50, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */

@@ -50,7 +50,7 @@ body {
   body .main {
     flex: 1 0 auto; }
     body .main .critical-word {
-      font-size: 6em; }
+      font-size: 3vw; }
     body .main .word-container .card {
       box-shadow: none; }
       body .main .word-container .card .card-content {
@@ -72,7 +72,7 @@ body {
     body .main .word-container:-webkit-full-screen {
       width: 100%; }
       body .main .word-container:-webkit-full-screen .critical-word {
-        font-size: 15em; }
+        font-size: 7vw; }
   body .page-header .nav-wrapper .brand-logo {
     top: 18px;
     padding-left: 10px;

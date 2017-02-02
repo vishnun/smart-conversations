@@ -10,7 +10,7 @@ body {
   .main {
     flex: 1 0 auto;
     .critical-word {
-      font-size: 6em;
+      font-size: 3vw;
     }
     .word-container {
       .card {
@@ -40,7 +40,7 @@ body {
       &:-webkit-full-screen {
         width: 100%;
         .critical-word {
-          font-size: 15em;
+          font-size: 7vw;
         }
       }
     }
