@@ -7,9 +7,10 @@ function Conversation(view, analyser) {
     var recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
-    recognition.maxAlternatives = 1;
+    recognition.maxAlternatives = 0;
     this.started = false;
     this.reset = true;
+    this.words = null;
     var languagesSupported = ['en-US', 'en-GB', 'en-IN', 'en-CA', 'en-AU', 'en-NZ', 'en-ZA'];
 
     this.view = view;
@@ -19,6 +20,7 @@ function Conversation(view, analyser) {
 
     recognition.onerror = function (event) {
         console.log('Speech recognition error detected: ' + event.error);
+        alert("An error occured. Please Save the data and refresh the page.");
     };
 
     recognition.onend = function () {
@@ -32,7 +34,16 @@ function Conversation(view, analyser) {
         return '#JSGF V1.0; grammar interest_words; public <interest_words> = ' + words.join(' | ') + ' ;';
     };
 
+    this.restart = function (words) {
+        words = words || this.words;
+        self.stopRecognition();
+        setTimeout(function () {
+            self.startRecognition(words);
+        }, 1000);
+    };
+
     this.startRecognition = function (words) {
+        this.words = words;
         recognition.lang = view.getLang();
         speechRecognitionList.addFromString(getGrammar(words), 1);
         recognition.grammars = speechRecognitionList;
@@ -44,6 +55,7 @@ function Conversation(view, analyser) {
         self.started = false;
         recognition.stop();
     };
+
     var dataItem = {};
     recognition.onresult = function (event) {
         var last = event.results.length - 1;

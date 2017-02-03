@@ -13,6 +13,7 @@ function ConversationView(analyser) {
     this.startBtnEl = $('#start-btn');
     this.conversation = null;
     this.previousWord = "";
+    this.timeout_obj = null;
 
     fullScreenEl.on('click', function () {
         if (wordContainer[0].webkitRequestFullscreen) {
@@ -35,6 +36,9 @@ function ConversationView(analyser) {
         for (topic in topics) {
             topicSelectEl.append('<option value="' + topic + '">' + topic + '</option>');
         }
+        topicSelectEl.on('change', function () {
+            self.conversation.restart(self.getWords());
+        });
     }
 
     function setupTwoWords() {
@@ -60,9 +64,10 @@ function ConversationView(analyser) {
     }
 
     this.setAutoClear = function (timeout) {
-        setTimeout(function () {
+        var timeout_obj = setTimeout(function () {
             clearWords();
         }, timeout);
+        return timeout_obj;
     };
 
     setupTopics();
@@ -107,13 +112,12 @@ ConversationView.prototype.checkWords = function (sentence, reset) {
                 returnVal.word1 = word;
                 this.previousWord = word;
                 returnVal.identified = true;
-                if (!this.isTwoWordsMode()) {
-                    this.setAutoClear(timeout);
-                }
+                this.timeout_obj = this.setAutoClear(timeout);
             } else if (mode && this.criticalWord2El.text() == '' && word !== this.previousWord && reset == true) {
                 this.criticalWord2El.text(word);
                 returnVal.word2 = word;
                 returnVal.identified = true;
+                clearTimeout(this.timeout_obj);
                 this.setAutoClear(timeout);
                 break;
             }
