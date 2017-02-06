@@ -20,7 +20,7 @@ function Conversation(view, analyser) {
 
     recognition.onerror = function (event) {
         console.log('Speech recognition error detected: ' + event.error);
-        alert("An error occured. Please Save the data and refresh the page.");
+        alert("An error occurred. Please Save the data and refresh the page.");
     };
 
     recognition.onend = function () {
