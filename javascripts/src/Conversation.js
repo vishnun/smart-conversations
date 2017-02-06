@@ -20,7 +20,7 @@ function Conversation(view, analyser) {
 
     recognition.onerror = function (event) {
         console.log('Speech recognition error detected: ' + event.error);
-        alert("An error occurred. Please Save the data and refresh the page.");
+        if (event.error == "network") alert("An error occurred. Please Save the data and refresh the page.");
     };
 
     recognition.onend = function () {
@@ -63,6 +63,7 @@ function Conversation(view, analyser) {
         var displayedOnScreen = view.isClear();
         view.checkWords(lastSentence, self.reset);
         if (event.results[last].isFinal) {
+            view.addToTranscript(lastSentence);
             var resultVal = view.getMatchedWords(lastSentence);
             if (resultVal.identified) {
                 var date = new Date(event.timeStamp);

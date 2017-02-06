@@ -14,6 +14,13 @@ function ConversationView(analyser) {
     this.conversation = null;
     this.previousWord = "";
     this.timeout_obj = null;
+    this.transcriptEl = $("#transcript");
+    var clearTranscriptEl = $(".clear-transcript");
+
+    clearTranscriptEl.on('click', function (e) {
+       $("#transcript").text("");
+       e.stopPropagation();
+    });
 
     fullScreenEl.on('click', function () {
         if (wordContainer[0].webkitRequestFullscreen) {
@@ -73,6 +80,10 @@ function ConversationView(analyser) {
     setupTopics();
     setupTwoWords();
 }
+
+ConversationView.prototype.addToTranscript = function (sentence) {
+    this.transcriptEl.append(sentence + " - ");
+};
 
 ConversationView.prototype.getMatchedWords = function (sentence) {
     var words = this.getWords();

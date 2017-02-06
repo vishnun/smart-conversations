@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" type="text/css" href="public/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <!--<link rel="stylesheet" type="text/css" href="public/css/materialize.min.css">-->
     <link rel="icon" href="/favicon.ico?" type="image/x-icon"/>
@@ -91,6 +93,18 @@
             <select class="topic-select">
             </select>
             <label>Select topic:</label>
+        </div>
+        <div class="col s12 transcript">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">description</i>Transcript
+                        <a class="right clear-transcript">clear</a>
+                    </div>
+                    <div class="collapsible-body">
+                        <textarea name="transcript" id="transcript" cols="30" rows="10" readonly></textarea>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

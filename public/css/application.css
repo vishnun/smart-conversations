@@ -1,164 +1,119 @@
-/* line 1, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/_reset.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-/* line 22, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/_reset.scss */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-/* line 26, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/_reset.scss */
-body {
-  line-height: 1;
-}
-
-/* line 29, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/_reset.scss */
-ol, ul {
-  list-style: none;
-}
-
-/* line 32, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/_reset.scss */
-blockquote, q {
-  quotes: none;
-}
-
-/* line 35, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/_reset.scss */
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-/* line 40, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/_reset.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 3, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 1, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
 
-/* line 7, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 5, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body #content {
   min-height: 200px;
 }
 
-/* line 10, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 8, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main {
   flex: 1 0 auto;
 }
 
-/* line 12, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 10, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .critical-word {
   font-size: 3vw;
 }
 
-/* line 16, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 14, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container .card {
   box-shadow: none;
 }
 
-/* line 18, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 16, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container .card .card-content {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-/* line 22, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 20, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container .card .card-action {
   padding: 10px;
 }
 
-/* line 24, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 22, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container .card .card-action #full-screen {
   position: absolute;
   right: 0;
   color: #02797d;
 }
 
-/* line 29, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 27, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container .card .card-action input#clear-timeout {
   width: 40px;
   text-align: center;
 }
 
-/* line 33, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 31, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container .card .card-action #save-csv {
   position: absolute;
   right: 40px;
   color: #02797d;
 }
 
-/* line 40, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 38, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container:-webkit-full-screen {
   width: 100%;
 }
 
-/* line 42, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 40, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .main .word-container:-webkit-full-screen .critical-word {
   font-size: 7vw;
 }
 
-/* line 50, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 48, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .page-header .nav-wrapper .brand-logo {
   top: 18px;
   padding-left: 10px;
   font-size: 1.5em;
 }
 
-/* line 57, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 55, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .page-footer {
   padding: 0;
 }
 
-/* line 60, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 58, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .card-image .valign-wrapper {
   min-height: 30vh;
 }
 
-/* line 62, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 60, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .card-image .valign-wrapper .valign {
   width: 100%;
 }
 
-/* line 67, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 65, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 body .lang-select.select-wrapper input.select-dropdown {
   margin-bottom: 0;
   height: 2rem;
 }
 
+/* line 71, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .transcript .collapsible-body {
+  padding: 1rem;
+}
+
 /* line 74, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+body .transcript textarea {
+  background: white;
+  height: 15rem;
+  padding: 5px;
+}
+
+/* line 83, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
   display: table;
 }
 
-/* line 80, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
+/* line 89, /Users/vishnunarang/Vishnu/projects/smart-conversations/styles/application.scss */
 .clearfix:after {
   clear: both;
 }
