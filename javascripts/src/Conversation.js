@@ -7,7 +7,7 @@ function Conversation(view, analyser) {
     var recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
-    recognition.maxAlternatives = 0;
+    recognition.maxAlternatives = 1;
     this.started = false;
     this.reset = true;
     this.words = null;
@@ -21,12 +21,14 @@ function Conversation(view, analyser) {
     recognition.onerror = function (event) {
         console.log('Speech recognition error detected: ' + event.error);
         if (event.error == "network") alert("An error occurred. Please Save the data and refresh the page.");
+        self.restart(self.words);
     };
 
     recognition.onend = function () {
         console.log('Speech recognition service disconnected');
         if (self.started) {
-            recognition.start();
+            console.log("connecting again..");
+            self.restart(self.words);
         }
     };
 
@@ -35,6 +37,7 @@ function Conversation(view, analyser) {
     };
 
     this.restart = function (words) {
+        console.log("restarting...");
         words = words || this.words;
         self.stopRecognition();
         setTimeout(function () {
@@ -49,6 +52,9 @@ function Conversation(view, analyser) {
         // recognition.grammars = speechRecognitionList;
         self.started = true;
         recognition.start();
+        setTimeout(function () {
+            self.restart(words);
+        }, 30000);
     };
 
     this.stopRecognition = function () {
@@ -57,7 +63,8 @@ function Conversation(view, analyser) {
     };
 
     var dataItem = {};
-    recognition.onresult = function (event) {
+
+    function processResult(event) {
         var last = event.results.length - 1;
         var lastSentence = event.results[last][0].transcript;
         var displayedOnScreen = view.isClear();
@@ -78,6 +85,12 @@ function Conversation(view, analyser) {
             }
             self.reset = true;
         }
+    }
+
+    recognition.onresult = function (event) {
+        setTimeout(function () {
+            processResult(event)
+        }, 10);
     };
 
 }
