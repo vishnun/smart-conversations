@@ -45,8 +45,8 @@ function Conversation(view, analyser) {
     this.startRecognition = function (words) {
         this.words = words;
         recognition.lang = view.getLang();
-        speechRecognitionList.addFromString(getGrammar(words), 1);
-        recognition.grammars = speechRecognitionList;
+        // speechRecognitionList.addFromString(getGrammar(words), 1);
+        // recognition.grammars = speechRecognitionList;
         self.started = true;
         recognition.start();
     };

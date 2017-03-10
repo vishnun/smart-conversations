@@ -7,48 +7,20 @@ body {
   body .main {
     flex: 1 0 auto; }
     body .main .critical-word {
-      font-size: 3vw; }
-    body .main .word-container .card {
-      box-shadow: none; }
-      body .main .word-container .card .card-content {
-        padding-top: 0;
-        padding-bottom: 0; }
-      body .main .word-container .card .card-action {
-        padding: 10px; }
-        body .main .word-container .card .card-action #full-screen {
-          position: absolute;
-          right: 0;
-          color: #02797d; }
-        body .main .word-container .card .card-action input#clear-timeout {
-          width: 40px;
-          text-align: center; }
-        body .main .word-container .card .card-action #save-csv {
-          position: absolute;
-          right: 40px;
-          color: #02797d; }
+      font-size: 6em; }
     body .main .word-container:-webkit-full-screen {
       width: 100%; }
       body .main .word-container:-webkit-full-screen .critical-word {
-        font-size: 7vw; }
-  body .page-header .nav-wrapper .brand-logo {
-    top: 18px;
-    padding-left: 10px;
-    font-size: 1.5em; }
+        font-size: 35em;
+        margin: 50px; }
   body .page-footer {
     padding: 0; }
-  body .card-image .valign-wrapper {
+  body .valign-wrapper {
     min-height: 30vh; }
-    body .card-image .valign-wrapper .valign {
+    body .valign-wrapper .valign {
       width: 100%; }
   body .lang-select.select-wrapper input.select-dropdown {
-    margin-bottom: 0;
-    height: 2rem; }
-  body .transcript .collapsible-body {
-    padding: 1rem; }
-  body .transcript textarea {
-    background: white;
-    height: 15rem;
-    padding: 5px; }
+    margin-bottom: 0; }
 
 .clearfix:before,
 .clearfix:after {
