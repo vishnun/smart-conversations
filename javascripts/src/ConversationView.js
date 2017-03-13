@@ -68,7 +68,6 @@ function ConversationView(analyser) {
         }
         self.criticalWord1El.text('');
         self.criticalWord2El.text('');
-        self.conversation.reset = false;
     }
 
     this.setAutoClear = function (timeout) {
@@ -110,7 +109,7 @@ ConversationView.prototype.isClear = function () {
 ConversationView.prototype.getTimeout = function () {
     return this.timeoutEl.val() * 1000;
 };
-ConversationView.prototype.checkWords = function (sentence, reset) {
+ConversationView.prototype.checkWords = function (sentence) {
     var words = this.getWords();
     var returnVal = {};
     var timeout = this.getTimeout();
@@ -118,14 +117,14 @@ ConversationView.prototype.checkWords = function (sentence, reset) {
     var mode = this.isTwoWordsMode();
     for (var index in words) {
         word = words[index];
-        if (sentence.indexOf(word) != -1 && reset) {
+        if (sentence.indexOf(word) != -1) {
             if (this.criticalWord1El.text() == '') {
                 this.criticalWord1El.text(word);
                 returnVal.word1 = word;
                 this.previousWord = word;
                 returnVal.identified = true;
                 this.timeout_obj = this.setAutoClear(timeout);
-            } else if (mode && this.criticalWord2El.text() == '' && word !== this.previousWord && reset == true) {
+            } else if (mode && this.criticalWord2El.text() == '' && word !== this.previousWord) {
                 this.criticalWord2El.text(word);
                 returnVal.word2 = word;
                 returnVal.identified = true;

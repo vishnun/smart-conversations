@@ -9,8 +9,8 @@ function Conversation(view, analyser) {
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
     this.started = false;
-    this.reset = true;
     this.words = null;
+    this.timeoutObj = null;
     var languagesSupported = ['en-US', 'en-GB', 'en-IN', 'en-CA', 'en-AU', 'en-NZ', 'en-ZA'];
 
     this.view = view;
@@ -52,13 +52,14 @@ function Conversation(view, analyser) {
         // recognition.grammars = speechRecognitionList;
         self.started = true;
         recognition.start();
-        setTimeout(function () {
+        self.timeoutObj = setTimeout(function () {
             self.restart(words);
-        }, 10000);
+        }, 15000);
     };
 
     this.stopRecognition = function () {
         self.started = false;
+        clearTimeout(this.timeoutObj);
         recognition.stop();
     };
 
@@ -69,7 +70,7 @@ function Conversation(view, analyser) {
         var lastSentence = event.results[last][0].transcript;
         var displayedOnScreen = view.isClear();
         if (event.results[last].isFinal) {
-            view.checkWords(lastSentence, self.reset);
+            view.checkWords(lastSentence);
             view.addToTranscript(lastSentence);
             var resultVal = view.getMatchedWords(lastSentence);
             if (resultVal.identified) {
@@ -83,12 +84,11 @@ function Conversation(view, analyser) {
                 analyser.pushItem(dataItem);
                 dataItem = {};
             }
-            self.reset = true;
         }
     }
 
     recognition.onresult = function (event) {
-        processResult(event);    
+        processResult(event);
     };
 
 }
