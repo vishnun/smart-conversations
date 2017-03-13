@@ -54,7 +54,7 @@ function Conversation(view, analyser) {
         recognition.start();
         setTimeout(function () {
             self.restart(words);
-        }, 30000);
+        }, 10000);
     };
 
     this.stopRecognition = function () {
@@ -68,8 +68,8 @@ function Conversation(view, analyser) {
         var last = event.results.length - 1;
         var lastSentence = event.results[last][0].transcript;
         var displayedOnScreen = view.isClear();
-        view.checkWords(lastSentence, self.reset);
         if (event.results[last].isFinal) {
+            view.checkWords(lastSentence, self.reset);
             view.addToTranscript(lastSentence);
             var resultVal = view.getMatchedWords(lastSentence);
             if (resultVal.identified) {
@@ -88,9 +88,7 @@ function Conversation(view, analyser) {
     }
 
     recognition.onresult = function (event) {
-        setTimeout(function () {
-            processResult(event)
-        }, 10);
+        processResult(event);    
     };
 
 }

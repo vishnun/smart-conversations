@@ -15,6 +15,7 @@ function ConversationView(analyser) {
     this.previousWord = "";
     this.timeout_obj = null;
     this.transcriptEl = $("#transcript");
+    this.selectedWords = null;
     var clearTranscriptEl = $(".clear-transcript");
 
     clearTranscriptEl.on('click', function (e) {
@@ -156,9 +157,13 @@ ConversationView.prototype.setupLanguages = function (languagesSupported) {
 };
 
 ConversationView.prototype.getWords = function () {
+    if (this.selectedWords) {
+        return this.selectedWords;
+    }
     var selectedTopicEl = $('.topic-select option:selected');
     var selectedTopic = selectedTopicEl.val();
-    return window.lcl.topics[selectedTopic];
+    this.selectedWords = window.lcl.topics[selectedTopic];
+    return this.selectedWords;
 };
 
 ConversationView.prototype.getLang = function () {
