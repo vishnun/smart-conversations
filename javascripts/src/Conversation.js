@@ -58,6 +58,7 @@ function Conversation(view, analyser) {
     };
 
     this.stopRecognition = function () {
+        console.log("Stopping now..");
         self.started = false;
         clearTimeout(this.timeoutObj);
         recognition.stop();
