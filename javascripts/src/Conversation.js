@@ -5,7 +5,7 @@ function Conversation(view, analyser) {
     var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
     var speechRecognitionList = new SpeechGrammarList();
     var recognition = new SpeechRecognition();
-    recognition.continuous = true;
+    recognition.continuous = false;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
     this.started = false;
